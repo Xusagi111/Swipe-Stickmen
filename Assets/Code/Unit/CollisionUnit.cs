@@ -17,7 +17,7 @@ namespace Assets.Code.Unit
 
                     Debug.Log("Offset" + a);
                     unit.test = true;
-                    unit.transform.position = new Vector3(transform.position.x + Random.Range(0, 1f), transform.position.y, transform.position.z + Random.Range(0, 1f));
+                    unit.transform.position = new Vector3(transform.position.x + Random.Range(-1, 1f), transform.position.y, transform.position.z + Random.Range(-1, 1f));
                     unit.test = false;
                     //unit.TestMovePoint();
                 }
