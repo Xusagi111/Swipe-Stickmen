@@ -1,5 +1,6 @@
 using Assets.Code;
 using Assets.Code.Static_Class;
+using Assets.Code.Unit;
 using UnityEngine;
 
 public class Main : MonoBehaviour
