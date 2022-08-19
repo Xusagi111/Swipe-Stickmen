@@ -17,8 +17,10 @@ namespace Assets.Code
             if (instanse != null) Destroy(instanse);
 
             instanse = this;
+
+            Initialization();
         }
-        private void Start()
+        private void Initialization()
         {
             ListUnitComponents = new List<T>(CountCreateBlocks);
             CreateFixedCountComponent(CountCreateBlocks);
