@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using TMPro;
 using UnityEngine;
 
 namespace Assets.Code
@@ -8,6 +8,8 @@ namespace Assets.Code
         public static AllData instanse;
 
         public GameObject PlayerCommand;
+
+        public TextMeshProUGUI CountPlayerUnit;
 
         private void Awake()
         {

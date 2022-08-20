@@ -1,4 +1,6 @@
-﻿using DG.Tweening;
+﻿using Assets.Code.Unit;
+using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,67 +13,30 @@ namespace Assets.Code
         public static ControllerUi instanse;
 
         [SerializeField] private TextMeshProUGUI _money;
-        [SerializeField] private TextMeshProUGUI _inventorCount;
+        [SerializeField] private TextMeshProUGUI _CountUnit;
         [SerializeField] private RectTransform _coinCunter;
-        [SerializeField] private Transform _cointCounterTransform;
-
-        private List<bool> AnimationCutdown = new List<bool>();
-        private bool isActiveAnimations;
-        private bool isUpdateCounter;
         private void Awake()
         {
             if (instanse != null) Destroy(instanse);
             instanse = this;
 
-            _cointCounterTransform = _coinCunter.transform;
-          
+            ControllerUnit.PlayerUpdateUi += UpdateCountInventory;
         }
-        private void Update()
+
+        internal void UpdateMoneyText(int money)
         {
-            if (AnimationCutdown.Count > 0 && !isActiveAnimations)
-            {
-                StartCoroutine(UpdateAnimation());
-            }
+            _money.text = money.ToString();
         }
 
-        public void UpdateMoneyText(int CurrentMoney)
+        private void OnDestroy()
         {
-            _money.text = CurrentMoney.ToString();
-            AnimationCutdown.Add(true);
-
-
-            if (isUpdateCounter)
-                StopCoroutine(UpdateEndTime());
-            else
-                StartCoroutine(UpdateEndTime());
-           
+            ControllerUnit.PlayerUpdateUi -= UpdateCountInventory;
         }
 
-        IEnumerator UpdateAnimation()
+        public void UpdateCountInventory(int InventoryCount)
         {
-            isActiveAnimations = true;
-            _coinCunter.gameObject.transform.DORotate(new Vector3(0, 0, 5), 0.1f, RotateMode.FastBeyond360);
-            yield return new WaitForSeconds(0.1f);
-            _coinCunter.gameObject.transform.DORotate(Vector3.zero, 0.1f, RotateMode.FastBeyond360);
-            yield return new WaitForSeconds(0.1f);
-            isActiveAnimations = false;
-
-            if (AnimationCutdown.Count != 0)
-                AnimationCutdown.RemoveAt(0);
+            _CountUnit.text = $"{InventoryCount}";
         }
 
-        IEnumerator UpdateEndTime()
-        {
-            isUpdateCounter = true;
-            yield return new WaitForSeconds(0.5f);
-            AnimationCutdown.Clear();
-            isUpdateCounter = false;
-           
-        }
-
-        public void UpdateCountInventory(int InventoryCount, int MaxCountInventory)
-        {
-            _inventorCount.text = $"{InventoryCount} / {MaxCountInventory}";
-        }
     }
 }

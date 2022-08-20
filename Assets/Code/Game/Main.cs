@@ -6,20 +6,19 @@ using UnityEngine;
 public class Main : MonoBehaviour
 {
     [SerializeField] private int StartCountUnit;
+    [SerializeField] private ControllerUnit controllerUnit;
     private void Start()
     {
         CreeatePlayer();
     }
     private void CreeatePlayer()
     {
-       
         for (int i = 0; i < StartCountUnit; i++)
         {
             Unit CurrentPlayer = UnitPool.instanse.UnitComponent;
 
             MainStaticClass.TransferPoint(CurrentPlayer.transform, AllData.instanse.PlayerCommand.transform,true);
+            controllerUnit.CurrentUnitPlayer.Add(CurrentPlayer);
         }
-      
-        //MainStaticClass.CreateUnit();
     }
 }
