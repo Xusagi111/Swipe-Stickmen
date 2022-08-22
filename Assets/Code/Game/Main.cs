@@ -7,17 +7,22 @@ public class Main : MonoBehaviour
 {
     [SerializeField] private int StartCountUnit;
     [SerializeField] private ControllerUnit controllerUnit;
+    private CreatePointToUnit StartPlayerUnit; //Ограничить.
+
     private void Start()
     {
-        CreeatePlayer();
+        StartPlayerUnit = new CreatePointToUnit();
+        StartPlayerUnit.CreatePointPlayer();
+        CreateUnit();
+
     }
-    private void CreeatePlayer()
+
+    private void CreateUnit()
     {
         for (int i = 0; i < StartCountUnit; i++)
         {
             Unit CurrentPlayer = UnitPool.instanse.UnitComponent;
-
-            MainStaticClass.TransferPoint(CurrentPlayer.transform, AllData.instanse.PlayerCommand.transform,true);
+            MainStaticClass.TransferPoint(CurrentPlayer.transform, AllData.instanse.PlayerCommand.transform, true, StartPlayerUnit.layouteTransfetPoint[i]);
             controllerUnit.CurrentUnitPlayer.Add(CurrentPlayer);
         }
     }

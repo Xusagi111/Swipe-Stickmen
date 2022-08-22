@@ -26,7 +26,7 @@ namespace Assets.Code.Unit
             }
         }
 
-        public LayoutUnit LayoutUnit;
+        public CreatePointToUnit LayoutUnit;
         public int TargetPoint;
         public int TansferPointIdUnit;
         public Vector3 CurrentPositionunit;

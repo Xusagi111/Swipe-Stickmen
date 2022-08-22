@@ -11,6 +11,8 @@ namespace Assets.Code
 
         public TextMeshProUGUI CountPlayerUnit;
 
+        public GameObject Unit;
+
         private void Awake()
         {
             if (instanse != null) Destroy(instanse);
