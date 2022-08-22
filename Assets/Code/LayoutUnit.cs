@@ -13,35 +13,31 @@ public class LayoutUnit : MonoBehaviour
     }
     static class TestCreatePoint
     {
-        public static int Circle = 0;
+        public static int CountCircle = 0;
 
-        public static void CheckRotatePoint(int Z, int X, ref ValueRotate valueRotate)
+        public static void CheckRotatePoint(float Z, float X, ref ValueRotate valueRotate, ref float a)
         {
             switch (valueRotate)
             {
                 case ValueRotate.One:
-                    if (Z == 0 )
-                    {
-                        valueRotate = ValueRotate.Two;
-                    }
+                    if (Z == 0 ) valueRotate = ValueRotate.Two;
                     break;
+
                 case ValueRotate.Two:
-                    if (X == 0)
-                    {
-                        valueRotate = ValueRotate.Three;
-                    }
+                    if (X == 0) valueRotate = ValueRotate.Three;
                     break;
+
                 case ValueRotate.Three:
-                    if (Z == 0)
-                    {
-                        valueRotate = ValueRotate.Four;
-                    }
+                    if (Z == 0) valueRotate = ValueRotate.Four;
                     break;
                 case ValueRotate.Four:
                     if (X == 0)
                     {
                         valueRotate = ValueRotate.One;
-                        Circle++;
+
+                        a = CountCircle == 0 ? 5 : CountCircle == 1 ? 7 : 9;
+
+                        CountCircle++;
                     }
                     break;
             }
@@ -49,17 +45,19 @@ public class LayoutUnit : MonoBehaviour
     }
 
     private ValueRotate valueRotate = ValueRotate.One;
-    public int StartZPoint = 4;
-    public int StartXPoit = -1;
+    public float StartZPoint = 3;
+    public float StartXPoit = 0;
     //шаг
-    [SerializeField] public int YUp = 2;
-    [SerializeField] public int XUp = 2;
+    public float YUp = 1f;
+    public float XUp = 1f;
+    public GameObject Unit; // ADD
     private void CreatePointPlayer()
     {
-        layouteTransfetPoint = new Transform[16];
-        for (int i = 0; i < 16; i++)
+        TestCreatePoint.CountCircle = 0;
+        layouteTransfetPoint = new Transform[120];
+        for (int i = 0; i < 120; i++)
         {
-            TestCreatePoint.CheckRotatePoint(StartZPoint, StartXPoit, ref valueRotate);
+            TestCreatePoint.CheckRotatePoint(StartZPoint, StartXPoit, ref valueRotate, ref StartZPoint);
             switch (valueRotate)
             {
                 case ValueRotate.One:
@@ -76,9 +74,20 @@ public class LayoutUnit : MonoBehaviour
                     break;
             }
             Transform CreatPoint = new GameObject().transform;
+            CreatPoint.transform.position += new Vector3(CreatPoint.transform.position.x, CreatPoint.transform.position.y + 1.5f);
             CreatPoint.position = new Vector3(StartXPoit, 0, StartZPoint);
             layouteTransfetPoint[i] = CreatPoint;
         }
+        CreateGameObj();
+    }
+    [ContextMenu("CreatePrimitive")]
+    private void CreateGameObj()
+    {
+        for (int i = 0; i < layouteTransfetPoint.Length; i++)
+        {
+            Instantiate(Unit, layouteTransfetPoint[i].position, Quaternion.identity, this.transform);
+        }
+   
     }
     private void LateUpdate()
     {
