@@ -8473,8 +8473,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 959394151}
-  - component: {fileID: 959394152}
   - component: {fileID: 959394153}
+  - component: {fileID: 959394152}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -14248,6 +14248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1630098451}
   - component: {fileID: 1630098452}
+  - component: {fileID: 1630098450}
   m_Layer: 0
   m_Name: PlayerCommand
   m_TagString: Untagged
@@ -14255,6 +14256,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1630098450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630098449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f80018d3735293641aed1b80b60a00b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1630098451
 Transform:
   m_ObjectHideFlags: 0

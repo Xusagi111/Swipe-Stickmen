@@ -1,4 +1,5 @@
 using Assets.Code;
+using Assets.Code._3d_My_Layoute;
 using Assets.Code.Static_Class;
 using Assets.Code.Unit;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class Main : MonoBehaviour
     {
         StartPlayerUnit = new CreatePointToUnit();
         StartPlayerUnit.CreatePointPlayer();
+        MainLayoute.instanse.list.Add(StartPlayerUnit);
+
         CreateUnit();
 
     }
@@ -23,6 +26,8 @@ public class Main : MonoBehaviour
         {
             Unit CurrentPlayer = UnitPool.instanse.UnitComponent;
             MainStaticClass.TransferPoint(CurrentPlayer.transform, AllData.instanse.PlayerCommand.transform, true, StartPlayerUnit.layouteTransfetPoint[i]);
+
+            StartPlayerUnit.PlayerUnit[i] = new Transform[] { CurrentPlayer.transform, StartPlayerUnit.layouteTransfetPoint[i] };
             controllerUnit.CurrentUnitPlayer.Add(CurrentPlayer);
         }
     }

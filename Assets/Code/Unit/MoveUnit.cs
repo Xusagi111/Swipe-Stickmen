@@ -1,4 +1,3 @@
-using Assets.Code;
 using UnityEngine;
 
 public class MoveUnit : MonoBehaviour
@@ -8,11 +7,12 @@ public class MoveUnit : MonoBehaviour
     private GameObject LinkToMoveCommand;
     private void Start()
     {
-        LinkToMoveCommand = AllData.instanse.PlayerCommand;
+        //LinkToMoveCommand = AllData.instanse.PlayerCommand;
+        //TODO Test
+        LinkToMoveCommand = GameObject.Find("SpawnPointUnit").gameObject;
     }
     private void FixedUpdate()
     {
         LinkToMoveCommand.transform.position = new Vector3(LinkToMoveCommand.transform.position.x + joystick.Horizontal * TestMove, LinkToMoveCommand.transform.position.y);
-        
     }
 }

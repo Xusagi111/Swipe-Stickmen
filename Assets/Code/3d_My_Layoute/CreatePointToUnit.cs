@@ -4,9 +4,9 @@ public enum ValueRotate { One, Two, Three, Four }
 //TODO Добавить выборку начала спавна точек.
 public class CreatePointToUnit
 {
-    public Transform[] layouteTransfetPoint { get; private set; }
+    public Transform[] layouteTransfetPoint { get; set; }
 
-    public Transform[][] PlayerUnit { get; private set; } = new Transform[20][];
+    public Transform[][] PlayerUnit { get; set; }
 
     private ValueRotate valueRotate = ValueRotate.One;
     private float StartZPoint = 3;
@@ -24,20 +24,21 @@ public class CreatePointToUnit
         this.YUp = YUp;
         this.XUp = XUp;
         this.CurrentCountPlayer = CurrentCountPlayer;
+        PlayerUnit = new Transform[CurrentCountPlayer][];
     }
     public CreatePointToUnit()
     {
-        
+        PlayerUnit = new Transform[96][];
     }
     public void CreatePointPlayer()
     {
         GameObject ParentPointSpawnUnit = new GameObject();
-        ParentPointSpawnUnit.name = "SpawnPointUnit";
-        CreatePoint.CountCircle = 0;
+        ParentPointSpawnUnit.name = "SpawnPointUnit"; //Реализован поиск по имени.
+        SwitchingQuarter.CountCircle = 0;
         layouteTransfetPoint = new Transform[CurrentCountPlayer];
         for (int i = 0; i < CurrentCountPlayer; i++)
         {
-            CreatePoint.CheckRotatePoint(StartZPoint, StartXPoit, ref valueRotate, ref StartZPoint);
+            SwitchingQuarter.CheckRotatePoint(StartZPoint, StartXPoit, ref valueRotate, ref StartZPoint);
             switch (valueRotate)
             {
                 case ValueRotate.One:

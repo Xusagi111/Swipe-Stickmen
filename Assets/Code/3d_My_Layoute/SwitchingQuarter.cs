@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Code._3d_My_Layoute
 {
-    public static class CreatePoint
+    public static class SwitchingQuarter
     {
         public static int CountCircle = 0;
 

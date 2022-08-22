@@ -13,9 +13,5 @@ namespace Assets.Code.Static_Class
 
             ChildrenComponent.gameObject.SetActive(true);
         }
-        public static void CreateUnit()
-        {
-
-        }
     }
 }
