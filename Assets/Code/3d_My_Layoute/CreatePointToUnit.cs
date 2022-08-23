@@ -59,8 +59,6 @@ public class CreatePointToUnit
             CreatPoint.gameObject.name = "PointUnit  " + (1 + i);
             CreatPoint.SetParent(ParentPointSpawnUnit.transform);
 
-            //CreatPoint.transform.position += new Vector3(CreatPoint.transform.position.x, CreatPoint.transform.position.y + 1.5f, CreatPoint.transform.position.z);
-            //Debug.Log("Test Transform position1 " + CreatPoint.transform.position.y);
             CreatPoint.position = new Vector3(StartXPoit, CreatPoint.transform.position.y + 1f, StartZPoint);
             layouteTransfetPoint[i] = CreatPoint;
             Debug.Log("Test Transform position " + CreatPoint.transform.position.y);

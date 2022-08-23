@@ -13,6 +13,8 @@ namespace Assets.Code
 
         public GameObject Unit;
 
+        public int PlayerCommand111;
+
         private void Awake()
         {
             if (instanse != null) Destroy(instanse);

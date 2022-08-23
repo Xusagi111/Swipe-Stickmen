@@ -22,7 +22,7 @@ namespace Assets.Code._3d_My_Layoute
                     if (list[i].PlayerUnit[n]?[0] != null)
                     {
                         list[i].PlayerUnit[n][0].transform.position = list[i].PlayerUnit[n][1].transform.position;
-                        Debug.Log("Update Transform Position " + list[i].PlayerUnit[n][0].transform.position.y);
+                        //Debug.Log("Update Transform Position "  + "Объект " +  list[i].PlayerUnit[n][0].transform.position.y + " Point "+ list[i].PlayerUnit[n][0].transform.position.y);
                     }
                 }
                 

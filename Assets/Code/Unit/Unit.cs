@@ -9,7 +9,7 @@ public struct DistansePoint
     public float Distanse;
     public int SellPoint;
 }
-
+//1) Сделать быстрое обращение к элементам. 2) Разбросать по методам для более лучшей читаемости.
 namespace Assets.Code.Unit
 {
     public class Unit : MonoBehaviour, IUnit
@@ -25,6 +25,7 @@ namespace Assets.Code.Unit
         }
 
         public bool test;
+        
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out MapToTrigger mapToTrigger)) { 
@@ -54,7 +55,6 @@ namespace Assets.Code.Unit
                 {
                     for (int i = 0; i < MainLayoute.instanse.list?[0].PlayerUnit?.Length; i++)
                     {
-
                         if (MainLayoute.instanse.list[0].PlayerUnit?[i]?[0] != null && MainLayoute.instanse.list[0].PlayerUnit?[i][0].gameObject.name == this.name)
                         {
                             return;
@@ -70,7 +70,7 @@ namespace Assets.Code.Unit
                         AllDistansePoint.Add(DataDistanse);
                     }
                     AllDistansePoint.Sort((a, b) => a.Distanse.CompareTo(b.Distanse));
-                    //Debug.Log($"Distanse To point GameObj {AllDistansePoint[0].Distanse} {AllDistansePoint[1].Distanse} ");
+
                     MainLayoute.instanse.list[0].PlayerUnit[AllDistansePoint[0].SellPoint][0] = this.UnitPosition;
                     return;
                 }
