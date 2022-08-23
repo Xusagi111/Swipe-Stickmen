@@ -1,3 +1,4 @@
+using Assets.Code;
 using UnityEngine;
 
 public class MoveUnit : MonoBehaviour
@@ -7,9 +8,10 @@ public class MoveUnit : MonoBehaviour
     private GameObject LinkToMoveCommand;
     private void Start()
     {
-        //LinkToMoveCommand = AllData.instanse.PlayerCommand;
+        LinkToMoveCommand = AllData.instanse.PlayerCommand;
         //TODO Test
-        LinkToMoveCommand = GameObject.Find("SpawnPointUnit").gameObject;
+        GameObject CurrentPlayer = GameObject.Find("SpawnPointUnit").gameObject;
+        CurrentPlayer.transform.SetParent(LinkToMoveCommand.transform);
     }
     private void FixedUpdate()
     {

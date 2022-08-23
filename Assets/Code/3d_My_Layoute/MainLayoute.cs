@@ -19,9 +19,10 @@ namespace Assets.Code._3d_My_Layoute
             {
                 for (int n = 0; n < list[i].PlayerUnit.Length; n++)
                 {
-                    if (list[i].PlayerUnit[n] != null)
+                    if (list[i].PlayerUnit[n]?[0] != null)
                     {
                         list[i].PlayerUnit[n][0].transform.position = list[i].PlayerUnit[n][1].transform.position;
+                        Debug.Log("Update Transform Position " + list[i].PlayerUnit[n][0].transform.position.y);
                     }
                 }
                 
