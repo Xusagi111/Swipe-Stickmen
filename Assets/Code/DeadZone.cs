@@ -7,7 +7,7 @@ public class DeadZone : MonoBehaviour
     {
         if (other.TryGetComponent(out Unit unit))
         {
-            ControllerUnit.FindObjectOfType<ControllerUnit>().CurrentUnitPlayer.Remove(unit);
+            ControllerUnit.instanse.CurrentUnitPlayer.Remove(unit);
         }
     }
 }

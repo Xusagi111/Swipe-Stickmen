@@ -1,10 +1,7 @@
 ﻿using Assets.Code.Unit;
-using DG.Tweening;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Code
 {
@@ -15,6 +12,7 @@ namespace Assets.Code
         [SerializeField] private TextMeshProUGUI _money;
         [SerializeField] private TextMeshProUGUI _CountUnit;
         [SerializeField] private RectTransform _coinCunter;
+        [SerializeField] private GameObject EndPanel;
         private void Awake()
         {
             if (instanse != null) Destroy(instanse);
@@ -35,8 +33,16 @@ namespace Assets.Code
 
         public void UpdateCountInventory(int InventoryCount)
         {
+            if (InventoryCount == 0)
+            {
+                EndPanel.SetActive(true);
+            }
             _CountUnit.text = $"{InventoryCount}";
         }
 
+        public void ResetLevel()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }

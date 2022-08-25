@@ -24,11 +24,9 @@ namespace Assets.Code.Unit
             UnitPosition = this.transform;
         }
 
-        public bool test;
-        
-        private void OnTriggerEnter(Collider other)
+        private void OnCollisionEnter(Collision collision)
         {
-            if (other.TryGetComponent(out MapToTrigger mapToTrigger)) { 
+            if (collision.gameObject.TryGetComponent(out MapToTrigger mapToTrigger)) { 
             
                 if (mapToTrigger.TriggerCollision == TriggerPoint.Solid) { 
                 
@@ -41,15 +39,13 @@ namespace Assets.Code.Unit
                             return;
                         }
                     }
-
-                   
                 }
             }
         }
-        //Todo разобрать по элементам.
-        private void OnTriggerExit(Collider other)
+
+        private void OnCollisionExit(Collision collision)
         {
-            if (other.TryGetComponent(out MapToTrigger mapToTrigger))
+            if (collision.gameObject.TryGetComponent(out MapToTrigger mapToTrigger))
             {
                 if (mapToTrigger.TriggerCollision == TriggerPoint.Solid)
                 {
@@ -61,7 +57,7 @@ namespace Assets.Code.Unit
                         }
                     }
                     var AllDistansePoint = new List<DistansePoint>();
-                    
+
                     //Сортировка по дистанции.
                     for (int i = 0; i < MainLayoute.instanse.list[0].PlayerUnit?[i].Length; i++)
                     {
@@ -74,6 +70,25 @@ namespace Assets.Code.Unit
                     MainLayoute.instanse.list[0].PlayerUnit[AllDistansePoint[0].SellPoint][0] = this.UnitPosition;
                     return;
                 }
+            }
+
+        }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.tag == "Let")
+            {
+                for (int i = 0; i < MainLayoute.instanse.list?[0].PlayerUnit?.Length; i++)
+                {
+                    if (MainLayoute.instanse.list[0].PlayerUnit?[i]?[0] != null && MainLayoute.instanse.list[0].PlayerUnit?[i][0].gameObject.name == this.name)
+                    {
+                        MainLayoute.instanse.list[0].PlayerUnit[i][0] = null;
+                       
+                    }
+                }
+                ControllerUnit.instanse.CurrentUnitPlayer.Remove(this);
+                ControllerUnit.PlayerUpdateUi?.Invoke(ControllerUnit.instanse.CurrentUnitPlayer.Count);
+               
+                UnitPool.instanse.UnitComponent = this;
             }
         }
     }
