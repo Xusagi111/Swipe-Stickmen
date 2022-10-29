@@ -7,14 +7,16 @@ namespace Assets.Code.Unit
     {
         public static ControllerUnit instanse;
         public static Action<int> PlayerUpdateUi;
-        [SerializeField] private List<Unit> Unit = new List<Unit>();
+        [SerializeField] private List<NewUnit> Unit = new List<NewUnit>();
         private const byte COUNT_PLAYER = 1;
+
         private void Start()
         {
             if (instanse != null) Destroy(instanse);
             instanse = this;
         }
-        public List<Unit> CurrentUnitPlayer
+
+        public List<NewUnit> CurrentUnitPlayer
         {
             get {
 

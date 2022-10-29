@@ -10,6 +10,7 @@ public class MoveUnit : MonoBehaviour
 
     private GameObject LinkToMoveCommand;
    [SerializeField] private float MovePosition; //Test Public view component
+
     private void Start()
     {
         LinkToMoveCommand = AllData.instanse.PlayerCommand;
@@ -17,6 +18,7 @@ public class MoveUnit : MonoBehaviour
         GameObject CurrentPlayer = GameObject.Find("SpawnPointUnit").gameObject;
         CurrentPlayer.transform.SetParent(LinkToMoveCommand.transform);
     }
+
     private void FixedUpdate()
     {
         MovePosition = LinkToMoveCommand.transform.position.x + joystick.Horizontal * TestMove;

@@ -12,23 +12,23 @@ public class Main : MonoBehaviour
 
     private void Start()
     {
-        StartPlayerUnit = new CreatePointToUnit();
-        StartPlayerUnit.CreatePointPlayer();
-        MainLayoute.instanse.list.Add(StartPlayerUnit);
+        //StartPlayerUnit = new CreatePointToUnit();
+        //StartPlayerUnit.CreatePointPlayer();
+        //MainLayoute.instanse.list.Add(StartPlayerUnit);
 
-        CreateUnit();
+        //CreateUnit();
 
     }
 
-    private void CreateUnit()
-    {
-        for (int i = 0; i < StartCountUnit; i++)
-        {
-            Unit CurrentPlayer = UnitPool.instanse.UnitComponent;
-            MainStaticClass.TransferPoint(CurrentPlayer.transform, AllData.instanse.PlayerCommand.transform, true, StartPlayerUnit.layouteTransfetPoint[i]);
+    //private void CreateUnit()
+    //{
+    //    for (int i = 0; i < StartCountUnit; i++)
+    //    {
+    //        Unit CurrentPlayer = UnitPool.instanse.UnitComponent;
+    //        MainStaticClass.TransferPoint(CurrentPlayer.transform, AllData.instanse.PlayerCommand.transform, true, StartPlayerUnit.layouteTransfetPoint[i]);
 
-            StartPlayerUnit.PlayerUnit[i] = new Transform[] { CurrentPlayer.transform, StartPlayerUnit.layouteTransfetPoint[i] };
-            controllerUnit.CurrentUnitPlayer.Add(CurrentPlayer);
-        }
-    }
+    //        StartPlayerUnit.PlayerUnit[i] = new Transform[] { CurrentPlayer.transform, StartPlayerUnit.layouteTransfetPoint[i] };
+    //        controllerUnit.CurrentUnitPlayer.Add(CurrentPlayer);
+    //    }
+    //}
 }

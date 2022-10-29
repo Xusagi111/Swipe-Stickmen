@@ -8,7 +8,7 @@ namespace Assets.Code
         public static BasePool<T> instanse;
 
         List<T> ListUnitComponents;
-        [SerializeField] private GameObject BlockWheats;
+        [SerializeField] private GameObject ComponentUnit;
         [SerializeField] private int CountCreateBlocks = 10;
         [SerializeField] private bool isUiGameobject;
 
@@ -20,6 +20,7 @@ namespace Assets.Code
 
             Initialization();
         }
+
         private void Initialization()
         {
             ListUnitComponents = new List<T>(CountCreateBlocks);
@@ -54,7 +55,7 @@ namespace Assets.Code
         {
             for (int i = 0; i < CountCreateBlocks; i++)
             {
-                T CreateBlock = Instantiate(BlockWheats, Vector3.one, Quaternion.identity, transform).GetComponent<T>();
+                T CreateBlock = Instantiate(ComponentUnit, Vector3.one, Quaternion.identity, transform).GetComponent<T>();
                 
                 ((Component)CreateBlock).gameObject.SetActive(false);
 

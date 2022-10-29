@@ -1,7 +1,11 @@
 using Assets.Code._3d_My_Layoute;
 using UnityEngine;
 public enum ValueRotate { One, Two, Three, Four }
+
 //TODO Добавить выборку начала спавна точек.
+
+//Реализован алгоритм спавна игроков в виде ромба.
+
 public class CreatePointToUnit
 {
     public Transform[] layouteTransfetPoint { get; set; }
@@ -26,10 +30,12 @@ public class CreatePointToUnit
         this.CurrentCountPlayer = CurrentCountPlayer;
         PlayerUnit = new Transform[CurrentCountPlayer][];
     }
+
     public CreatePointToUnit()
     {
         PlayerUnit = new Transform[96][];
     }
+
     public void CreatePointPlayer()
     {
         GameObject ParentPointSpawnUnit = new GameObject();

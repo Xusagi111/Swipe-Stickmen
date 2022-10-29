@@ -85,10 +85,10 @@ namespace Assets.Code.Unit
                        
                     }
                 }
-                ControllerUnit.instanse.CurrentUnitPlayer.Remove(this);
+               // ControllerUnit.instanse.CurrentUnitPlayer.Remove(this);
                 ControllerUnit.PlayerUpdateUi?.Invoke(ControllerUnit.instanse.CurrentUnitPlayer.Count);
                
-                UnitPool.instanse.UnitComponent = this;
+               // UnitPool.instanse.UnitComponent = this;
             }
         }
     }
