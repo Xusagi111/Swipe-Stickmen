@@ -2,7 +2,7 @@
 
 namespace Assets.Code
 {
-    public class DebugClassInEditor : MonoBehaviour
+    public class SpawnObstacle : MonoBehaviour
     {
         [SerializeField] private Vector3 GizmosRadius;
         [SerializeField] private Transform _startPoint;
@@ -53,10 +53,8 @@ namespace Assets.Code
             {
                 float z = Random.Range(_startPoint.position.z, _endPoint.position.z);
                 float x = Random.Range(_startPoint.position.x + GizmosRadius.x / 2, _startPoint.position.x - GizmosRadius.x / 2);
-                //GameObject Primitive = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
                 GameObject CurrentPoint = new GameObject();
-                CurrentPoint.transform.position = new Vector3(x, 1f, z);
-                //Primitive.transform.position = new Vector3(x, 1f, z);
+                CurrentPoint.transform.position = new Vector3(x, 0, z);
                 _pointToObstacles[i] = CurrentPoint.transform;
             }
         }
