@@ -11,6 +11,7 @@ namespace Assets.Code
         public void Inizialization()
         {
             transform.position += Vector3.forward;
+            UidUnit = Random.Range(0, 100000);
         }
 
         public void UpdateTransform(Transform ParentTransform, float speed)

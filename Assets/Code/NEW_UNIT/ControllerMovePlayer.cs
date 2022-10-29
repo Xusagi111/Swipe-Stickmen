@@ -28,20 +28,12 @@ namespace Assets.Code.NEW_UNIT
 
         private void Update()
         {
+            MainGameMove.transform.position = new Vector3(MainGameMove.transform.position.x, MainGameMove.transform.position.y, MainGameMove.transform.position.z + ForwardSpeedMainGameObj * Time.deltaTime);
+
             MoveMainElement();
 
+            MoveAllUnit();
 
-            if (MainGameMove.transform.position.x != DebugPositionX)
-            {
-                MoveAllUnit();
-                DebugPositionX = MainGameMove.transform.position.x;
-            }
-            
-        }
-
-        private void FixedUpdate()
-        {
-            MainGameMove.transform.position = new Vector3(MainGameMove.transform.position.x, MainGameMove.transform.position.y, MainGameMove.transform.position.z + ForwardSpeedMainGameObj * Time.deltaTime);
         }
 
         public void  MoveMainElement()

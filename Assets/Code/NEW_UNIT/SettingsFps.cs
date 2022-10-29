@@ -1,14 +1,14 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Code.NEW_UNIT
 {
     public class SettingsFps : MonoBehaviour
     {
-        //TODO Добавить ограничение по фпс.
+        [SerializeField] private int _valueFps;
+
         public void Update()
         {
-            
+            Application.targetFrameRate = _valueFps;
         }
     }
 }
