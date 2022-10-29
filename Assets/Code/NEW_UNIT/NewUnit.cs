@@ -8,9 +8,14 @@ namespace Assets.Code
         public float UidUnit;
         public Rigidbody RigidbodyUnit;
 
+        public void Inizialization()
+        {
+            transform.position += Vector3.forward;
+        }
+
         public void UpdateTransform(Transform ParentTransform, float speed)
         {
-            transform.position = Vector3.Lerp(transform.position, ParentTransform.position, 0.1f * Time.deltaTime * speed);
+            RigidbodyUnit.velocity = (ParentTransform.position - transform.position) * speed;
         }
     }
 }

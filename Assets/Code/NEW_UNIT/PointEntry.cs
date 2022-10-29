@@ -1,5 +1,5 @@
 ﻿using Assets.Code.Static_Class;
-using Assets.Code.Unit;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Code.NEW_UNIT
@@ -16,14 +16,21 @@ namespace Assets.Code.NEW_UNIT
 
         private void CreateUnit()
         {
+            List<NewUnit> CurrentCreateUnit  = new List<NewUnit>(StartCountUnit);
+
             for (int i = 0; i < StartCountUnit; i++)
             {
                 NewUnit CurrentPlayer = UnitPool.instanse.UnitComponent;
                 MainStaticClass.TransferPoint(CurrentPlayer.transform, AllData.instanse.PlayerCommand.transform, true);
 
-                controllerUnit.AllCurrentUnitToPlayerCommand.Add(CurrentPlayer);
+                CurrentPlayer.Inizialization();
+                CurrentCreateUnit.Add(CurrentPlayer);
             }
-            controllerUnit.AllCurrentUnitToPlayerCommand[0].transform.position  += Vector3.one;
+
+            CurrentCreateUnit[0].transform.position  += Vector3.one;
+
+            AllData.instanse.CurrentUnitGamePlay = CurrentCreateUnit;
+            controllerUnit.AllCurrentUnitToPlayerCommand = CurrentCreateUnit;
         }
     }
 }
