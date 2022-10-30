@@ -1,4 +1,5 @@
-﻿using Assets.Code.Static_Class;
+﻿using Assets.Code.StateGame;
+using Assets.Code.Static_Class;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +7,9 @@ namespace Assets.Code.NEW_UNIT
 {
     public class PointEntry : MonoBehaviour
     {
-        [SerializeField] private int StartCountUnit;
-        [SerializeField] private ControllerMovePlayer controllerUnit;
+        [SerializeField] private int _StartCountUnit = 30;
+        [SerializeField] private ControllerMovePlayer _controllerUnit;
+        [SerializeField] private TermsWin _termsWin;
 
         private void Start()
         {
@@ -16,9 +18,9 @@ namespace Assets.Code.NEW_UNIT
 
         private void CreateUnit()
         {
-            List<NewUnit> CurrentCreateUnit  = new List<NewUnit>(StartCountUnit);
+            List<NewUnit> CurrentCreateUnit  = new List<NewUnit>(_StartCountUnit);
 
-            for (int i = 0; i < StartCountUnit; i++)
+            for (int i = 0; i < _StartCountUnit; i++)
             {
                 NewUnit CurrentPlayer = UnitPool.instanse.UnitComponent;
                 MainStaticClass.TransferPoint(CurrentPlayer.transform, AllData.instanse.PlayerCommand.transform, true);
@@ -30,7 +32,7 @@ namespace Assets.Code.NEW_UNIT
             CurrentCreateUnit[0].transform.position  += Vector3.one;
 
             AllData.instanse.CurrentUnitGamePlay = CurrentCreateUnit;
-            controllerUnit.AllCurrentUnitToPlayerCommand = CurrentCreateUnit;
+            _controllerUnit.AllCurrentUnitToPlayerCommand = CurrentCreateUnit;
         }
     }
 }
