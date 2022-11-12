@@ -2,6 +2,7 @@
 
 namespace Assets.Code
 {
+    
     public class SpawnObstacle : MonoBehaviour
     {
         [SerializeField] private Vector3 GizmosRadius;

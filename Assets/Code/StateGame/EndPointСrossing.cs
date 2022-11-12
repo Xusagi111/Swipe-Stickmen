@@ -8,9 +8,17 @@ namespace Assets.Code.StateGame
         private Transform _mainPlayerElement;
         private Transform _endPositionGame;
 
-        public override void CheckToWin()
+        public override bool CheckToWin()
         {
-           
+            var CurrentDistanseToEnd = Vector3.Distance(_mainPlayerElement.position, _endPositionGame.position);
+            
+            if (CurrentDistanseToEnd <= 1)
+            {
+                return true;
+            }
+
+            return false;
+          
         }
 
         public override void Initialization(GameObject OneElement, GameObject TwoElement)

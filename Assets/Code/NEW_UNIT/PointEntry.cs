@@ -22,7 +22,7 @@ namespace Assets.Code.NEW_UNIT
 
             for (int i = 0; i < _StartCountUnit; i++)
             {
-                NewUnit CurrentPlayer = UnitPool.instanse.UnitComponent;
+                NewUnit CurrentPlayer = UnitPool.instanсe.UnitComponent;
                 MainStaticClass.TransferPoint(CurrentPlayer.transform, AllData.instanse.PlayerCommand.transform, true);
 
                 CurrentPlayer.Inizialization();

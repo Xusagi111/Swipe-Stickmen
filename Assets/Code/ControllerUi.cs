@@ -39,7 +39,7 @@ namespace Assets.Code
         {
             UpdateCountPlayerUnit();
 
-            if (_stateGame != null && _stateGame.isEndGame == true)
+            if (_stateGame != null && _stateGame.isEndFalseGame == true)
             {
                 EndPanel.SetActive(true);
             }

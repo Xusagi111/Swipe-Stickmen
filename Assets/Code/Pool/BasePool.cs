@@ -5,7 +5,7 @@ namespace Assets.Code
 {
     public class BasePool<T> : MonoBehaviour  where T: Component
     {
-        public static BasePool<T> instanse;
+        public static BasePool<T> instanсe;
 
         List<T> ListUnitComponents;
         [SerializeField] private GameObject ComponentUnit;
@@ -14,9 +14,9 @@ namespace Assets.Code
 
         private void Awake()
         {
-            if (instanse != null) Destroy(instanse);
+            if (instanсe != null) Destroy(instanсe);
 
-            instanse = this;
+            instanсe = this;
 
             Initialization();
         }
