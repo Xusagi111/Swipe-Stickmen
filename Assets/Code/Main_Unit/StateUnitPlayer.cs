@@ -1,18 +1,34 @@
-﻿using Assets.Code.NEW_UNIT;
-using System.Collections;
+﻿using Assets.Code.Level;
+using Assets.Code.NEW_UNIT;
 using UnityEngine;
 
 namespace Assets.Code.Main_Unit
 {
     public class StateUnitPlayer : MonoBehaviour
     {
-        public StateUnitPlayer instance;
+        public static StateUnitPlayer instance { get; set; }
 
         private void Awake()
         {
-            //Добавить инстанс.
+            if (instance != null) Destroy(instance);
+            instance = this;
         }
         
+        public void HandlerFactorX(FactorXEn FactorX, int CountValueUnit)
+        {
+            switch (FactorX)
+            {
+                case FactorXEn.Plus:
+                    AddedUnitToGamePlay(CountValueUnit);
+                    break;
+                case FactorXEn.Minus:
+                    RemoveUnitPlayer(CountValueUnit);
+                    break;
+                case FactorXEn.Multiplication:
+                    break;
+            }
+        }
+
         private void AddedUnitToGamePlay(int CountUnit)
         {
             CreatorProduct.Unit(CountUnit);

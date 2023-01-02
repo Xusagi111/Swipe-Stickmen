@@ -6,7 +6,6 @@ namespace Assets.Code.NEW_UNIT
 {
     public class Enemy : MonoBehaviour
     {
-
         private void OnTriggerEnter(Collider collision)
         {
             if (collision.gameObject.TryGetComponent(out NewUnit unit))

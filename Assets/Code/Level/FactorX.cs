@@ -1,15 +1,16 @@
-﻿using UnityEngine;
+﻿using Assets.Code.Main_Unit;
+using UnityEngine;
 
 namespace Assets.Code.Level
 {
-    public enum CurrentFactorX
+    public enum FactorXEn
     {
         Plus, Minus, Multiplication
     }
 
     public class FactorX : MonoBehaviour
     {
-        [SerializeField] private  CurrentFactorX _currentFactorX;
+        [SerializeField] private FactorXEn _currentFactorX;
         [SerializeField] private int CountUnitsToActiveBlock;
         public int CurrentContactUnit { get; private set; }
         private bool isSentRequestToTheControllerToInteractWithUnits;
@@ -30,6 +31,9 @@ namespace Assets.Code.Level
             if (CurrentContactUnit == CountUnitsToActiveBlock)
             {
                 isSentRequestToTheControllerToInteractWithUnits = true;
+
+                StateUnitPlayer.instance.HandlerFactorX(_currentFactorX, CountUnitsToActiveBlock);
+                Destroy(this.gameObject);
 
                 //TODO вызвать контроллер который отвечает за добавление текущего кол-ва войск. 
                 // Передаваит _currentFactorX.

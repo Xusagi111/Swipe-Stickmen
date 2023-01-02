@@ -15,16 +15,22 @@ namespace Assets.Code
         [SerializeField] private Transform ParentSpawnGameObj;
 
         [SerializeField] private int _countPointObstacles = 200;
+        [SerializeField] private bool _isEditorDrawGizmos;
         private Transform[] _pointToObstacles;
 
 
         private Transform _localTransform;
         private int _localRandomPoint;
+
+
         void OnDrawGizmos()
         {
-            //Gizmos.color = Color.yellow;
-            //Gizmos.DrawCube(_startPoint.position, GizmosRadius);
-            //Gizmos.DrawCube(_endPoint.position, GizmosRadius);
+            if (_isEditorDrawGizmos == true)
+            {
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawCube(_startPoint.position, GizmosRadius);
+                Gizmos.DrawCube(_endPoint.position, GizmosRadius);
+            }
         }
 
         private void Start()

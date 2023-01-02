@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace Assets.Code.NEW_UNIT
 {
-
     public class ControllerMovePlayer : MonoBehaviour
     {
         public bool isMobileController;
@@ -15,9 +14,8 @@ namespace Assets.Code.NEW_UNIT
         public float SideToSideSpeed = 10;
         public float floatDebug = 2;
 
-        [SerializeField] public List<NewUnit> AllCurrentUnitToPlayerCommand = new List<NewUnit>();
-
-        public float DebugPositionX;
+        [field: SerializeField] 
+        public List<NewUnit> AllCurrentUnitToPlayerCommand { get; set; } = new List<NewUnit>();
 
         public int ForwardSpeedMainGameObj;
 
@@ -28,15 +26,24 @@ namespace Assets.Code.NEW_UNIT
 
         private void Update()
         {
-            MainGameMove.transform.position = new Vector3(MainGameMove.transform.position.x, MainGameMove.transform.position.y, MainGameMove.transform.position.z + ForwardSpeedMainGameObj * Time.deltaTime);
-
+            MoveMainObj();
             MoveMainElement();
-
             MoveAllUnit();
-
+        }
+        private void MoveAllUnit()
+        {
+            foreach (var item in AllCurrentUnitToPlayerCommand)
+            {
+                item.UpdateTransform(MainGameMove.transform, floatDebug);
+            }
         }
 
-        public void  MoveMainElement()
+        private void MoveMainObj()
+        {
+            MainGameMove.transform.position = new Vector3(MainGameMove.transform.position.x, MainGameMove.transform.position.y, MainGameMove.transform.position.z + ForwardSpeedMainGameObj * Time.deltaTime);
+        }
+
+        private void  MoveMainElement()
         {
             float Horizontal = !isMobileController ? Input.GetAxis("Horizontal") : joystick.Horizontal;
 
@@ -51,14 +58,6 @@ namespace Assets.Code.NEW_UNIT
             }
 
             MainGameMove.transform.position = new Vector3(MainGameMove.transform.position.x + Horizontal * Time.deltaTime * SideToSideSpeed, MainGameMove.transform.position.y, MainGameMove.transform.position.z);
-        }
-
-        public void MoveAllUnit()
-        {
-            foreach (var item in AllCurrentUnitToPlayerCommand)
-            {
-                item.UpdateTransform(MainGameMove.transform, floatDebug); // .transform.LookAt(MainGameMove.transform); 
-            }
         }
     }
 }
